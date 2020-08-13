@@ -19,5 +19,10 @@
     <% } else {%>
     <h3>Nenhum erro!</h3>
     <%} %>
+    <hr />
+    <h3>Produtos</h3>
+    <% produtos.forEach(produto => { %>
+    <p>Nome: <%= produto.nome %>, preço: R$<%= produto.preco %></p>
+    <% }) %>
   </body>
 </html>
