@@ -8,7 +8,26 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <h1>Guia pergunta</h1>
+    <div class="navbar navbar-light bg-primary">
+      <a class="navbar-brand" href="/"><img src="/img/guia.png" alt="Gui do programador"></a>
+    </div>
+    <div class="container">
+      <div class="card" id="form-question">
+        <div class="card-header">
+          <h3>Realizar perguntas</h3>
+        </div>
+        <div class="card-body">
+          <form>
+            <label>Título</label>
+            <input type="text" placeholder="Título" class="form-control">
+            <br>
+            <label>Pergunta</label>
+            <textarea name="question" placeholder="Descreva sua pergunta" class="form-control"></textarea>
+            <br>
+            <button class="btn btn-success">Perguntar</button>
+          </form>
+        </div>
+      </div>
   </body>
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
