@@ -24,11 +24,13 @@ app.use(bodyParser.json());
 
 //Rotas
 app.get("/", (req, res) => {
-  questionModel.findAll({ raw: true }).then((question) => {
-    res.render("index", {
-      question: question,
+  questionModel
+    .findAll({ raw: true, order: [["id", "DESC"]] })
+    .then((question) => {
+      res.render("index", {
+        question: question,
+      });
     });
-  });
 });
 
 app.get("/question", (req, res) => {
