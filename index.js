@@ -24,7 +24,11 @@ app.use(bodyParser.json());
 
 //Rotas
 app.get("/", (req, res) => {
-  res.render("index");
+  questionModel.findAll({ raw: true }).then((question) => {
+    res.render("index", {
+      question: question,
+    });
+  });
 });
 
 app.get("/question", (req, res) => {
