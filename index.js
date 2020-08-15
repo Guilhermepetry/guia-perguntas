@@ -1,6 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const connection = require("./database/database");
+
+// DataBase
+
+connection
+  .authenticate()
+  .then(() => {
+    console.log("Conexão com banco de dados!");
+  })
+  .catch((erro) => {
+    console.log(erro);
+  });
 
 //Setting
 app.set("view engine", "ejs");
@@ -32,6 +44,6 @@ app.post("/savequestion", (req, res) => {
 });
 
 //Start server
-app.listen(8080, () => {
+app.listen(3000, () => {
   console.log("App rodando!");
 });
