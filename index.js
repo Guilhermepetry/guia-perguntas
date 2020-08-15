@@ -34,14 +34,14 @@ app.get("/question", (req, res) => {
 app.post("/savequestion", (req, res) => {
   var title = req.body.title;
   var description = req.body.description;
-  res.send(
-    "Formulário recebido com sucesso! " +
-      "Título: " +
-      title +
-      ", " +
-      "Descrição: " +
-      description
-  );
+  questionModel
+    .create({
+      title: title,
+      description: description,
+    })
+    .then(() => {
+      res.redirect("/");
+    });
 });
 
 //Start server
