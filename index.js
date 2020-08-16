@@ -50,6 +50,23 @@ app.post("/savequestion", (req, res) => {
     });
 });
 
+app.get("/question/:id", (req, res) => {
+  var id = req.params.id;
+  questionModel
+    .findOne({
+      where: { id: id },
+    })
+    .then((question) => {
+      if (question != undefined) {
+        res.render("answer", {
+          question: question,
+        });
+      } else {
+        res.redirect("/");
+      }
+    });
+});
+
 //Start server
 app.listen(3000, () => {
   console.log("App rodando!");
