@@ -59,12 +59,33 @@ app.get("/question/:id", (req, res) => {
     })
     .then((question) => {
       if (question != undefined) {
-        res.render("answer", {
-          question: question,
-        });
+        answerModel
+          .findAll({
+            where: { questionId: question.id },
+            order: [["id", "DESC"]],
+          })
+          .then((answer) => {
+            res.render("answer", {
+              question: question,
+              answer: answer,
+            });
+          });
       } else {
         res.redirect("/");
       }
+    });
+});
+
+app.post("/answer", (req, res) => {
+  var body = req.body.body;
+  var answerId = req.body.question;
+  answerModel
+    .create({
+      body: body,
+      questionId: answerId,
+    })
+    .then(() => {
+      res.redirect("/question/" + answerId);
     });
 });
 
